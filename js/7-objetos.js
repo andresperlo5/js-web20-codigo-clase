@@ -184,6 +184,8 @@ const productos = [
     descripcion: "la mejor de argentina",
     bloqueo: false,
   },
+
+  /* nuevoElemento */
 ];
 
 /* CRUD o ABM */
@@ -201,12 +203,109 @@ M - Modificacion
 
 /* Tienen que crear 5 funciones para el CRUD COMPLETO */
 
-const crearNuevoProduto = () => {};
+const crearNuevoProduto = () => {
 
-const obtenerInfoProducto = (idProducto) => {};
+  const titulo = prompt("Ingrese el nombre del producto")
+  const imagen = prompt("Ingrese la imagen del producto")
+  const precio = prompt("Ingrese el precio del producto")
+  const descripcion = prompt("Ingrese la descripcion del producto")
 
-const actualizarProducto = (idProducto) => {};
 
-const eliminarFisicamenteUnProducto = (idProducto) => {};
+  /* id: productos.length ? productos[productos.length - 1].id + 1 : 1, */
+  const nuevoProducto = {
+    id: productos[productos.length - 1]?.id + 1 || 1,
+    titulo,
+    imagen,
+    precio,
+    descripcion,
+    bloqueo: true,
+  }
 
-const eliminarLogicamenteUnProducto = (idProducto) => {};
+  productos.push(nuevoProducto)
+};
+
+const obtenerTodosLosProductos = () => {
+  productos.forEach((producto) => console.log(producto))
+}
+
+const obtenerInfoDeUnProducto = (idProducto) => {
+  productos.forEach((producto) => {
+    if (producto.id === idProducto) {
+      console.log(producto)
+    }
+  })
+};
+
+const actualizarProducto = (idProducto) => {
+  const obtenerProductoActualizar = productos.find((producto) => producto.id === idProducto)
+
+  const infoActualizar = Number(
+    prompt(`Ingresa el numero de lo que quieres actualizar:
+    1- Nombre del Producto: ${obtenerProductoActualizar.titulo}
+    2- Imagen: ${obtenerProductoActualizar.imagen}
+    3- Precio: ${obtenerProductoActualizar.precio}
+    4- Descripcion: ${obtenerProductoActualizar.descripcion}
+    5- Cambiar la opcion de bloqueo: ${obtenerProductoActualizar.bloqueo ? "Visible" : "No Visible"}
+    `
+    )
+  )
+
+  switch (infoActualizar) {
+    case 1:
+      const nuevoNombre = prompt("Ingrese un nuevo titulo para el producto")
+      obtenerProductoActualizar.titulo = nuevoNombre
+      break
+    case 2:
+      const nuevaImagen = prompt("Ingrese una nueva url para la imagen del producto")
+      obtenerProductoActualizar.imagen = nuevaImagen
+      break
+    case 3:
+      const nuevoPrecio = prompt("Ingrese un nuevo precio para el producto")
+      obtenerProductoActualizar.precio = nuevoPrecio
+      break
+    case 4:
+      const nuevaDescripcion = prompt("Ingrese una nueva descripcion para el producto")
+      obtenerProductoActualizar.descripcion = nuevaDescripcion
+      break
+    case 5:
+      const nuevaOpcionDeBloqueo = prompt("Ingrese la opcion de:'Visible' o 'No Visible' para el producto")
+      obtenerProductoActualizar.bloqueo = nuevaOpcionDeBloqueo
+      break
+
+    default:
+      console.log("Esta opcion no esta disponible")
+      break
+  }
+};
+
+
+const eliminarFisicamenteUnProducto = (idProducto) => {
+  const confirmarEliminarUnProducto = confirm("¿Estas seguro de que quieres eliminar este producto? Ten en cuenta que una vez realizada la operacion no tendras marcha atras.")
+
+
+  if (confirmarEliminarUnProducto) {
+    /*  const nuevoArraySinElProducto = productos.filter((producto) => producto.id !== idProducto)
+ 
+     productos = nuevoArraySinElProducto
+ 
+     console.log(nuevoArraySinElProducto) */
+
+    productos.forEach((producto, i) => {
+      if (producto.id === idProducto) {
+        productos.splice(i, 1)
+      }
+    })
+  }
+}
+
+const eliminarLogicamenteUnProducto = (idProducto) => {
+  const confirmarBloqueoLogicoProducto = confirm("¿Estas seguro de que quieres bloquear a este producto?")
+
+  if (confirmarBloqueoLogicoProducto) {
+    productos.forEach((producto, i) => {
+      if (producto.id === idProducto) {
+        producto.bloqueo = true
+      }
+    })
+  }
+};

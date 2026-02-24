@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOM</title>
+    <title>Inicio de Sesion</title>
     <!-- CSS Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -11,15 +11,13 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-
-    <!-- CSS Propio -->
-    <link rel="stylesheet" href="./css/estilos.css" />
+    <link rel="stylesheet" href="../css/estilos.css" />
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="./index.html">Logo</a>
+          <a class="navbar-brand" href="../index.html">Logo</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -37,7 +35,7 @@
                 <a
                   class="nav-link active"
                   aria-current="page"
-                  href="./index.html"
+                  href="../index.html"
                   >Inicio</a
                 >
               </li>
@@ -50,14 +48,12 @@
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="./paginas/iniciar-sesion.html"
+                <a class="nav-link" href="./iniciar-sesion.html"
                   >Iniciar Sesion</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./paginas/registrarse.html"
-                  >Registrarse</a
-                >
+                <a class="nav-link" href="./registrarse.html">Registrarse</a>
               </li>
             </ul>
           </div>
@@ -65,22 +61,46 @@
       </nav>
     </header>
     <main>
-      <h2 class="text-center my-5">Nuestros Productos</h2>
-      <div class="container">
-        <div class="row" id="divTituloPrincipal"></div>
+      <h2 class="text-center my-3">Inicar tu sesion</h2>
+      <div class="d-flex justify-content-center my-5">
+        <form class="w-25">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Usuario</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Contraseña</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="text-center my-3">
+            <small class="text-center"
+              >Si todavia no tenes una cuenta. Haz click</small
+            >
+            <a href="./registrarse.html">aqui</a>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary w-75">
+              Iniciar Sesion
+            </button>
+          </div>
+        </form>
       </div>
     </main>
     <footer class="py-5 bg-body-tertiary text-center mt-5">
       <h2>Footer</h2>
     </footer>
 
-    <!-- JS de Bootstrap -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-    <!-- nuestro js -->
-    <script src="./js/18-dom.js"></script>
+    <script src="../js/19-detalleDelProducto.js"></script>
   </body>
 </html>

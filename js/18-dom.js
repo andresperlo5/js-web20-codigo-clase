@@ -39,7 +39,9 @@ pero si le paso el simbolo de (.) punto busca por clase y si le paso el simbolo
         <h5 class="card-title text-truncate">${producto.title}</h5>
         <p class="card-text ">$${producto.price}</p>
         <p class="card-text text-truncate">${producto.description}</p>
-        <a href="#" class="btn btn-primary">Ver Mas</a>
+        <div class="text-center">
+          <a href="../paginas/detalleDelProducto.html?id=${producto.id}" class="btn btn-primary">Ver Mas</a>
+        </div>
       </div>
     </div>
   </div>

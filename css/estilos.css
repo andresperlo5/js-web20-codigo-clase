@@ -8,3 +8,7 @@
   height: 50vh;
   object-fit: cover;
 }
+
+.div-imagen img {
+  width: 200px;
+}

@@ -73,36 +73,38 @@
               id="inputUsuario"
               aria-describedby="emailHelp"
             />
-            <small id="idMensajeErrorUsuario" class="text-danger">Campo USUARIO vacio</small>
+            <small id="idMensajeErrorUsuario" class="text-danger"
+              >Campo USUARIO vacio</small
+            >
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
+            <label for="inputCorreo" class="form-label"
               >Correo del Usuario</label
             >
             <input
               type="eamil"
               class="form-control"
-              id="exampleInputEmail1"
+              id="inputCorreo"
               aria-describedby="emailHelp"
             />
+            <small id="idMensajeErrorCorreo" class="text-danger"
+              >Campo CORREO DEL USUARIO vacio</small
+            >
           </div>
           <div class="mb-3">
-            <label for="inputContrasenia" class="form-label"
-              >Contraseña</label
+            <label for="inputContrasenia" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="inputContrasenia" />
+            <small id="idMensajeErrorContrasenia" class="text-danger"
+              >Campo CONTRASEÑA vacio</small
             >
-            <input
-              type="password"
-              class="form-control"
-              id="inputContrasenia"
-            />
-         <small>
-            <ul class="mt-2">
-            <li>Debe contener una letra en minuscula</li>
-            <li>Debe contener una letra en mayuscula</li>
-            <li>Debe contener un caracter especial(@,+,/,etc)</li>
-            <li>Minimo de caracteres: 8</li>
-           </ul>
-         </small>
+            <small>
+              <ul class="mt-2">
+                <li>Debe contener una letra en minuscula</li>
+                <li>Debe contener una letra en mayuscula</li>
+                <li>Debe contener un caracter especial(@,+,/,etc)</li>
+                <li>Minimo de caracteres: 8</li>
+              </ul>
+            </small>
           </div>
 
           <div class="mb-3">
@@ -114,21 +116,29 @@
               class="form-control"
               id="inputRepContrasenia"
             />
-          </div>
-
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-            />
-            <label class="form-check-label" for="exampleCheck1"
-              >Terminos y condiciones</label
+            <small id="idMensajeErrorRepContrasenia" class="text-danger"
+              >Campo REPETIR CONTRASEÑA vacio</small
             >
           </div>
 
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="inputCheck" />
+            <label class="form-check-label" for="inputCheck"
+              >Terminos y condiciones</label
+            >
+            <div>
+              <small id="idMensajeErrorCheck" class="text-danger"
+                >Debes ACEPTAR los terminos y condiciones</small
+              >
+            </div>
+          </div>
+
           <div class="text-center">
-            <button id="botonRegistro" type="submit class="btn btn-primary w-75">
+            <button
+              id="botonRegistro"
+              type="submit"
+              class="btn btn-primary w-75"
+            >
               Enviar Datos
             </button>
           </div>

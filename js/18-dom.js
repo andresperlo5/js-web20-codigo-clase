@@ -25,11 +25,30 @@ pero si le paso el simbolo de (.) punto busca por clase y si le paso el simbolo
 
 (
   async () => {
+    const superAdmin = {
+      nombreUsuario: "superAdmin",
+      correoUsuario: "super@admin.com",
+      contrasenia: "123456789Admin",
+      rol: "superAdmin",
+      login: false
+    }
+
+    localStorage.setItem("superAdmin", JSON.stringify(superAdmin))
+
+
     const divPadreDelTituloPrincipal = document.getElementById("divTituloPrincipal")
     const productosFakeStore = await fetch('https://fakestoreapi.com/products')
     const arrayDeProductos = await productosFakeStore.json()
 
-    divPadreDelTituloPrincipal.innerHTML = arrayDeProductos.map((producto) =>
+    const productosBD = JSON.parse(localStorage.getItem("productos")) || []
+
+    if (!productosBD.length) {
+      localStorage.setItem("productos", JSON.stringify(arrayDeProductos))
+    }
+
+
+
+    divPadreDelTituloPrincipal.innerHTML = productosBD.map((producto) =>
 
       `
   <div class="col-12 col-md-6 col-lg-4 my-3">

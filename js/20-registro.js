@@ -3,8 +3,6 @@ const inputCorreo = document.getElementById("inputCorreo")
 const inputContrasenia = document.getElementById("inputContrasenia")
 const inputRepContrasenia = document.getElementById("inputRepContrasenia")
 const inputCheck = document.getElementById("inputCheck")
-
-
 const botonRegistro = document.getElementById("botonRegistro")
 
 const mensajeErrorUsuario = document.getElementById("idMensajeErrorUsuario")
@@ -13,6 +11,7 @@ const mensajeErrorContrasenia = document.getElementById("idMensajeErrorContrasen
 const mensajeErrorRepContrasenia = document.getElementById("idMensajeErrorRepContrasenia")
 const mensajeErrorCheck = document.getElementById("idMensajeErrorCheck")
 
+const usuariosBD = JSON.parse(localStorage.getItem("usuarios")) || []
 
 mensajeErrorUsuario.classList.add("d-none")
 mensajeErrorCorreo.classList.add("d-none")
@@ -95,8 +94,40 @@ botonRegistro.addEventListener("click", (evento) => {
     return
   }
 
-  if (inputContrasenia.value && inputRepContrasenia.value) {
+  if (inputUsuario.value && inputCorreo.value && inputCheck.checked && inputContrasenia.value && inputRepContrasenia.value) {
+    console.log("1")
     if (inputContrasenia.value === inputRepContrasenia.value) {
+
+      const usuarioExiste = usuariosBD.find((user) => user.nombreUsuario === inputUsuario.value)
+
+      const emailExiste = usuariosBD.find((user) => user.correoUsuario === inputCorreo.value)
+
+      if (usuarioExiste) {
+        alert("Usuario no disponible. Tenes que elegir otro nombre de usuario")
+        return
+      }
+
+      if (emailExiste) {
+        alert("Email duplicado. Y tenes una cuenta con este email")
+        return
+      }
+
+      const nuevoUsuarios = {
+        id: usuariosBD[usuariosBD.length - 1]?.id + 1 || 1,
+        nombreUsuario: inputUsuario.value,
+        correoUsuario: inputCorreo.value,
+        contrasenia: inputContrasenia.value,
+        tyc: inputCheck.checked,
+        rol: "usuario",
+        bloqueo: true,
+        login: false
+      }
+      usuariosBD.push(nuevoUsuarios)
+
+      localStorage.setItem("usuarios", JSON.stringify(usuariosBD))
+
+      alert("usuario creado con exito")
+
       setTimeout(() => {
         location.href = "../paginas/iniciar-sesion.html"
       }, 1000);
